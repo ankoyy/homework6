@@ -11,7 +11,7 @@ import java.util.Date;
  * @author wangrui.sh
  * @since Jul 11, 2020
  */
-@Entity(tableName = "todo")
+@Entity(tableName = "lfy_todo")
 public class TodoListEntity {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
@@ -23,9 +23,13 @@ public class TodoListEntity {
     @ColumnInfo(name = "time")
     private Date mTime;
 
-    public TodoListEntity(String mContent, Date mTime) {
+    @ColumnInfo(name = "ischecked")
+    private int mChecked;
+
+    public TodoListEntity(String mContent, Date mTime, int mChecked) {
         this.mContent = mContent;
         this.mTime = mTime;
+        this.mChecked = mChecked;
     }
 
     public String getContent() {
@@ -51,4 +55,8 @@ public class TodoListEntity {
     public void setId(Long mId) {
         this.mId = mId;
     }
+
+    public int getChecked() {return mChecked;}
+
+    public void setChecked(int mchecked) {this.mChecked = mchecked;}
 }
